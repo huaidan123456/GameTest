@@ -1,0 +1,14 @@
+AnimationName,spriteFrameName,total,interval
+_attack_1,_attack_1_,6,0.1
+_attack_2,_attack_2_,4,0.1
+_attack_3,_attack_3_,4,0.1
+_attack_4,_attack_4_,8,0.1
+_attack_5,_attack_5_,9,0.1
+_attack_effect,_attack_effect_,4,0.1
+_attack,_attack_,7,0.1
+_hurt,_hurt_,2,0.2
+_run,_run_,8,0.1
+_skill_effect,_skill_effect_,13,0.1
+_skill,_skill_,13,0.1
+_stand,_stand_,8,0.1
+_walk,_walk_,8,0.1
