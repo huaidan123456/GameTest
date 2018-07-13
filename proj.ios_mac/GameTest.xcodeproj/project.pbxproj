@@ -64,6 +64,8 @@
 		9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F21941C20DB9711000B8569 /* GameRocker.cpp */; };
 		9F32826F20F3556E0029DDC1 /* GameRoleHurtState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F32826E20F3556E0029DDC1 /* GameRoleHurtState.cpp */; };
 		9F32827220F365870029DDC1 /* GameRoleSkillState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F32827120F365870029DDC1 /* GameRoleSkillState.cpp */; };
+		9F33A08220F5B22E00C165F3 /* GameEnemyA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */; };
+		9F33A08620F5FAA800C165F3 /* FightTestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F33A08520F5FAA800C165F3 /* FightTestManager.cpp */; };
 		9F366C3D20EE3A46009427D3 /* GameRoleAttackState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F366C3C20EE3A46009427D3 /* GameRoleAttackState.cpp */; };
 		9F62314E20CA2ADF00FF8DE8 /* ALTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F62314D20CA2ADF00FF8DE8 /* ALTools.cpp */; };
 		9F6AC40620C6B49B00AD4941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AC40520C6B49B00AD4941 /* Images.xcassets */; };
@@ -206,6 +208,10 @@
 		9F32826E20F3556E0029DDC1 /* GameRoleHurtState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleHurtState.cpp; sourceTree = "<group>"; };
 		9F32827020F365870029DDC1 /* GameRoleSkillState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleSkillState.h; sourceTree = "<group>"; };
 		9F32827120F365870029DDC1 /* GameRoleSkillState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleSkillState.cpp; sourceTree = "<group>"; };
+		9F33A08020F5B22D00C165F3 /* GameEnemyA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameEnemyA.h; sourceTree = "<group>"; };
+		9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameEnemyA.cpp; sourceTree = "<group>"; };
+		9F33A08420F5FAA800C165F3 /* FightTestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FightTestManager.h; sourceTree = "<group>"; };
+		9F33A08520F5FAA800C165F3 /* FightTestManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FightTestManager.cpp; sourceTree = "<group>"; };
 		9F366C3B20EE3A46009427D3 /* GameRoleAttackState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleAttackState.h; sourceTree = "<group>"; };
 		9F366C3C20EE3A46009427D3 /* GameRoleAttackState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleAttackState.cpp; sourceTree = "<group>"; };
 		9F62314C20CA2ADF00FF8DE8 /* ALTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTools.h; sourceTree = "<group>"; };
@@ -517,6 +523,8 @@
 				9F21941A20DB96C3000B8569 /* 摇杆 */,
 				9F1CD2BC20E64C5A00AAF7CC /* GDMainGameScene.h */,
 				9F1CD2BD20E64C5A00AAF7CC /* GDMainGameScene.cpp */,
+				9F33A08420F5FAA800C165F3 /* FightTestManager.h */,
+				9F33A08520F5FAA800C165F3 /* FightTestManager.cpp */,
 			);
 			name = "格斗游戏";
 			sourceTree = "<group>";
@@ -602,6 +610,8 @@
 				9F985C7E20EB704F00614AB7 /* GameRoleA.cpp */,
 				9F127F6620EF7D7C00356DB2 /* RoleModelUtil.h */,
 				9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */,
+				9F33A08020F5B22D00C165F3 /* GameEnemyA.h */,
+				9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */,
 			);
 			name = "人物";
 			sourceTree = "<group>";
@@ -842,6 +852,7 @@
 				9F985C7920EB6EA700614AB7 /* EntityBase.cpp in Sources */,
 				9F1CD2B920E6314D00AAF7CC /* TestWelcomeScene.cpp in Sources */,
 				9FE848CB20CE59DE0081D2C8 /* GameMap.cpp in Sources */,
+				9F33A08220F5B22E00C165F3 /* GameEnemyA.cpp in Sources */,
 				9F1CD2B020E5E71900AAF7CC /* ALSceneExtension.cpp in Sources */,
 				9F0C70CC20EA24E100CA4D32 /* ALCsvUtil.cpp in Sources */,
 				9F32827220F365870029DDC1 /* GameRoleSkillState.cpp in Sources */,
@@ -854,6 +865,7 @@
 				9F97469C20C4DFB2009B5C98 /* GameScene.cpp in Sources */,
 				9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */,
 				9F9746A120C4DFF0009B5C98 /* LoadingScene.cpp in Sources */,
+				9F33A08620F5FAA800C165F3 /* FightTestManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				9FA29D7120C8ED2E00554312 /* HeroAttackState.cpp in Sources */,
 				9F985C7120EB1A7000614AB7 /* CsvUtil.cpp in Sources */,

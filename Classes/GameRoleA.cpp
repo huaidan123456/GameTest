@@ -13,6 +13,10 @@
 #include "GameRoleRunState.h"
 #include "RoleModelUtil.h"
 
+
+#include "FightTestManager.h"
+
+
 #define DO_MOVE_TIME 0.2
 
 GameRoleA::GameRoleA(int roleId)
@@ -58,7 +62,9 @@ void GameRoleA::initRole()
     
     _speedWalk = 30;
     _speedRun = 60;
-    _attackSize = RoleModelUtil::getInstance()->getRoleAnchorPoint(_roleId);
+    _attackSize = RoleModelUtil::getInstance()->getRoleAttackSize(_roleId);
+    _skillSize = RoleModelUtil::getInstance()->getRoleAttackSize(_roleId);
+    _hurtSize = RoleModelUtil::getInstance()->getRoleHurtSize(_roleId);
     
     _directionEnable = true;
     _direction = DirectionTypeDefine::NoneType;
@@ -108,11 +114,28 @@ void GameRoleA::resetInitActionState()
 Rect GameRoleA::getRoleAttackRect()
 {
     if (isRoleFlippedX()) {
-        return Rect(this->getPositionX(), this->getPositionY(), _attackSize.width, _attackSize.height);
+        return Rect(getPositionX()-_attackSize.width, getPositionY()-_attackSize.height/2, _attackSize.width, _attackSize.height);
     }
     else{
-        return Rect(this->getPositionX()-_attackSize.width, this->getPositionY()-_attackSize.height, _attackSize.width, _attackSize.height);
+        return Rect(getPositionX(), getPositionY()-_attackSize.height/2, _attackSize.width, _attackSize.height);
     }
+}
+
+/**
+ *  获取攻击范围
+ */
+Rect GameRoleA::getRoleSkillAtkRect()
+{
+    return Rect(getPositionX(), getPositionY()-_skillSize.height/2, _skillSize.width, _skillSize.height);
+}
+
+
+/**
+ *  获取被攻击范围
+ */
+Rect GameRoleA::getRoleHurtRect()
+{
+    return Rect(getPositionX()-_hurtSize.width/2, getPositionY()-_hurtSize.height/2, _hurtSize.width, _hurtSize.height);
 }
 
 
@@ -220,7 +243,6 @@ void GameRoleA::attackAction()
     
     stopAllActionAnimation();
     
-    
     // 攻击效果
     if (_attackStage == 0 || _attackStage == 1) {
         auto effectAnim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack_effect",_roleId));
@@ -238,7 +260,8 @@ void GameRoleA::attackAction()
         auto anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack",_roleId));
         if (anim) {
             anim->setLoops(1);
-            float delay = ((float)anim->getFrames().size()) * anim->getDelayPerUnit() - 0.2f;
+            float animTime = ((float)anim->getFrames().size()) * anim->getDelayPerUnit();
+            float delay =  animTime - 0.2f;
             auto action1 = Sequence::create(DelayTime::create(delay),CallFunc::create([this]{
                 _changeAttackEnable = true;
             }), NULL);
@@ -247,15 +270,20 @@ void GameRoleA::attackAction()
                 _actionState->exit(this);
             }), NULL);
             
+            auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
+                FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), 0);
+            }), NULL);
+            
             _changeAttackEnable = false;
             _attackStage++;
-            _pRole->runAction(Spawn::create(action1,action2, NULL));
+            _pRole->runAction(Spawn::create(action1,action2,atkEnemyAct, NULL));
         }
     }else {
         auto anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack_%d",_roleId,_attackStage));
         if (anim) {
             anim->setLoops(1);
-            float delay = ((float)anim->getFrames().size()) * anim->getDelayPerUnit() - 0.2f;
+            float animTime = ((float)anim->getFrames().size()) * anim->getDelayPerUnit();
+            float delay =  animTime - 0.2f;
             auto action1 = Sequence::create(DelayTime::create(delay),CallFunc::create([this]{
                 _changeAttackEnable = true;
             }), NULL);
@@ -264,15 +292,17 @@ void GameRoleA::attackAction()
                 _actionState->exit(this);
             }), NULL);
             
+            auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
+                FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), 0);
+            }), NULL);
+            
             _changeAttackEnable = false;
             _attackStage++;
-            _pRole->runAction(Spawn::create(action1,action2, NULL));
+            _pRole->runAction(Spawn::create(action1,action2,atkEnemyAct, NULL));
         }
     }
     
-    
     _attackStage = _attackStage >= 6 ? 0 : _attackStage;
-    
 }
 
 void GameRoleA::hurtAction()
@@ -321,6 +351,13 @@ void GameRoleA::skill1Action()
         }), NULL));
     }
     
+    float animTime = anim->getFrames().size()*anim->getDelayPerUnit();
+    auto atkAct = CallFunc::create([this]{
+        FightTestManager::getInstance()->attackEnemyAs(getRoleSkillAtkRect(), 0);
+    });
+    auto atkEnemyAct = Sequence::create(DelayTime::create(animTime*0.3),atkAct,DelayTime::create(animTime*0.3),atkAct, NULL);
+    this->runAction(atkEnemyAct);
+    
     // 创建技能效果
     auto effectAnim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_skill_effect",_roleId));
     auto effect = Sprite::createWithSpriteFrameName(StringUtils::format("%d_skill_effect_0000.png",_roleId));
@@ -333,41 +370,31 @@ void GameRoleA::skill1Action()
     }), NULL);
     effect->runAction(effectAnction);
     
-    
-    
-    
     resetAttackStage();
 }
 
 void GameRoleA::skill2Action()
 {
-    
-    
     resetAttackStage();
 }
 
 void GameRoleA::skill3Action()
 {
- 
     resetAttackStage();
 }
 
 void GameRoleA::skill4Action()
 {
-    
     resetAttackStage();
 }
 
 void GameRoleA::skill5Action()
 {
-    
     resetAttackStage();
 }
 
 void GameRoleA::deathAction()
 {
-    
-    
     resetAttackStage();
 }
 
@@ -438,8 +465,6 @@ void GameRoleA::stopAllActionAnimation()
         _pHurt->removeFromParent();
         _pHurt = nullptr;
     }
-    
-    
 }
 
 void GameRoleA::setupRoleFlippedX(bool isFlipped)

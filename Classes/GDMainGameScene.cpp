@@ -15,6 +15,9 @@
 #include "GameRoleCmd.h"
 #include "GameRoleState.h"
 
+#include "GameEnemyA.h"
+#include "FightTestManager.h"
+
 
 
 using namespace cocos2d::ui;
@@ -62,6 +65,12 @@ void GDMainGameScene::onLoadResources()
     addImageAsync("GDGameRes/fightImg/skillNpcEffect.png");
     addImageAsync("GDGameRes/maps/40001.png");
     addImageAsync("GDGameRes/joyStick/joyStickImg.png");
+    
+    
+    addImageAsync("GDGameRes/model/10032/10032_stand.png");
+    addImageAsync("GDGameRes/model/10032/10032_hurt.png");
+    
+    
     
 }
 
@@ -118,7 +127,6 @@ void GDMainGameScene::onLoadResourcesCompleted()
         auto tRow = std::get<1>(tColumnRowCount);
         
         
-        
         for (int i = 1; i <= tRow; ++i) {
             auto animationName = StringUtils::format("%d%s",roleId,pCsvUtil->getText(i, CsvAnimationProperty::en_AnimationName, csvPath).c_str());
             auto frameName = StringUtils::format("%d%s",roleId,pCsvUtil->getText(i, CsvAnimationProperty::en_FrameName, csvPath).c_str());
@@ -142,6 +150,35 @@ void GDMainGameScene::onLoadResourcesCompleted()
     sfInstance->addSpriteFramesWithFile("GDGameRes/fightImg/blood.plist");
     sfInstance->addSpriteFramesWithFile("GDGameRes/fightImg/roleArrow.plist");
     sfInstance->addSpriteFramesWithFile("GDGameRes/fightImg/skillNpcEffect.plist");
+    
+
+    
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10032/10032_stand.plist");
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10032/10032_hurt.plist");
+    
+    
+    auto animation = Animation::create();
+    for (int i = 0; i < 10; ++i) {
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(StringUtils::format("10032_stand_%s.png",getNumStr(i).c_str()));
+        if (!frame) break;
+        animation->addSpriteFrame(frame);
+    }
+    animation->setDelayPerUnit(0.1);
+    animation->setRestoreOriginalFrame(true);
+    AnimationCache::getInstance()->addAnimation(animation, "10032_stand");
+    
+    
+    auto animation2 = Animation::create();
+    for (int i = 0; i < 10; ++i) {
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(StringUtils::format("10032_hurt_%s.png",getNumStr(i).c_str()));
+        if (!frame) break;
+        animation2->addSpriteFrame(frame);
+    }
+    animation2->setDelayPerUnit(0.2);
+    animation2->setRestoreOriginalFrame(true);
+    AnimationCache::getInstance()->addAnimation(animation2, "10032_hurt");
+    
+    
     
     
     // 受伤动画
@@ -218,9 +255,17 @@ void GDMainGameScene::loadGameScene()
     
     _pHero = GameRoleA::create(roleId);
     _pHero->setPosition(Vec2(100, 100));
-    this->addChild(_pHero,1);
+    this->addChild(_pHero,2);
     
     this->scheduleUpdate();
+    
+    
+    // 添加一个敌人
+    auto enemy = GameEnemyA::create(10032);
+    enemy->setPosition(900, 200);
+    this->addChild(enemy,1);
+    
+    FightTestManager::getInstance()->addEnemy(enemy);
 }
 
 
