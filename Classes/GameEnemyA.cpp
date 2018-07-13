@@ -21,7 +21,7 @@ GameEnemyA::~GameEnemyA()
 
 bool GameEnemyA::init()
 {
-    if (EntityBase::init()) {
+    if (EntityTestBase::init()) {
         initRole();
         return true;
     }

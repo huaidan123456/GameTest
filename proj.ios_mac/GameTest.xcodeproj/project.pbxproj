@@ -55,6 +55,10 @@
 		9F0C70BE20E9D6C000CA4D32 /* CSV in Resources */ = {isa = PBXBuildFile; fileRef = 9F0C70BD20E9D6C000CA4D32 /* CSV */; };
 		9F0C70CC20EA24E100CA4D32 /* ALCsvUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C70CB20EA24E100CA4D32 /* ALCsvUtil.cpp */; };
 		9F127F6820EF7D7C00356DB2 /* RoleModelUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */; };
+		9F135B7A20F88CB10024BD1F /* EntityTestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F135B7920F88CB10024BD1F /* EntityTestBase.cpp */; };
+		9F135B7F20F892D80024BD1F /* ActorBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F135B7E20F892D80024BD1F /* ActorBase.cpp */; };
+		9F135B8320F8A7DB0024BD1F /* ActorModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F135B8220F8A7DB0024BD1F /* ActorModel.cpp */; };
+		9F135B8620F8AD600024BD1F /* ActorModelUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F135B8520F8AD600024BD1F /* ActorModelUtil.cpp */; };
 		9F1AC89720DCB07100A92CE1 /* TestRockerScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AC89620DCB07100A92CE1 /* TestRockerScene.cpp */; };
 		9F1CD2B020E5E71900AAF7CC /* ALSceneExtension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CD2AF20E5E71900AAF7CC /* ALSceneExtension.cpp */; };
 		9F1CD2B420E62BBB00AAF7CC /* TestLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CD2B320E62BBB00AAF7CC /* TestLoadingScene.cpp */; };
@@ -190,6 +194,14 @@
 		9F127F6520EF7C2E00356DB2 /* CsvConfigDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvConfigDefine.h; sourceTree = "<group>"; };
 		9F127F6620EF7D7C00356DB2 /* RoleModelUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoleModelUtil.h; sourceTree = "<group>"; };
 		9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoleModelUtil.cpp; sourceTree = "<group>"; };
+		9F135B7820F88CB10024BD1F /* EntityTestBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntityTestBase.h; sourceTree = "<group>"; };
+		9F135B7920F88CB10024BD1F /* EntityTestBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EntityTestBase.cpp; sourceTree = "<group>"; };
+		9F135B7D20F892D80024BD1F /* ActorBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActorBase.h; sourceTree = "<group>"; };
+		9F135B7E20F892D80024BD1F /* ActorBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActorBase.cpp; sourceTree = "<group>"; };
+		9F135B8120F8A7DB0024BD1F /* ActorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActorModel.h; sourceTree = "<group>"; };
+		9F135B8220F8A7DB0024BD1F /* ActorModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActorModel.cpp; sourceTree = "<group>"; };
+		9F135B8420F8AD600024BD1F /* ActorModelUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActorModelUtil.h; sourceTree = "<group>"; };
+		9F135B8520F8AD600024BD1F /* ActorModelUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActorModelUtil.cpp; sourceTree = "<group>"; };
 		9F1AC89520DCB07100A92CE1 /* TestRockerScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestRockerScene.h; sourceTree = "<group>"; };
 		9F1AC89620DCB07100A92CE1 /* TestRockerScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRockerScene.cpp; sourceTree = "<group>"; };
 		9F1CD2AE20E5E71900AAF7CC /* ALSceneExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALSceneExtension.h; sourceTree = "<group>"; };
@@ -491,6 +503,23 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9F135B7B20F88E8B0024BD1F /* 人物 */ = {
+			isa = PBXGroup;
+			children = (
+				9F127F6620EF7D7C00356DB2 /* RoleModelUtil.h */,
+				9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */,
+				9F985C7720EB6EA700614AB7 /* EntityBase.h */,
+				9F985C7820EB6EA700614AB7 /* EntityBase.cpp */,
+				9F135B7D20F892D80024BD1F /* ActorBase.h */,
+				9F135B7E20F892D80024BD1F /* ActorBase.cpp */,
+				9F135B8120F8A7DB0024BD1F /* ActorModel.h */,
+				9F135B8220F8A7DB0024BD1F /* ActorModel.cpp */,
+				9F135B8420F8AD600024BD1F /* ActorModelUtil.h */,
+				9F135B8520F8AD600024BD1F /* ActorModelUtil.cpp */,
+			);
+			name = "人物";
+			sourceTree = "<group>";
+		};
 		9F1CD2AA20E5E52100AAF7CC /* BaseScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,7 +547,8 @@
 			children = (
 				9F985C8420EB771800614AB7 /* 命令 */,
 				9F985C8020EB76BB00614AB7 /* 状态 */,
-				9F985C7620EB6BFD00614AB7 /* 人物 */,
+				9F135B7B20F88E8B0024BD1F /* 人物 */,
+				9F985C7620EB6BFD00614AB7 /* 人物Test */,
 				9F1CD2AA20E5E52100AAF7CC /* BaseScene */,
 				9F21941A20DB96C3000B8569 /* 摇杆 */,
 				9F1CD2BC20E64C5A00AAF7CC /* GDMainGameScene.h */,
@@ -601,19 +631,17 @@
 			name = "英雄";
 			sourceTree = "<group>";
 		};
-		9F985C7620EB6BFD00614AB7 /* 人物 */ = {
+		9F985C7620EB6BFD00614AB7 /* 人物Test */ = {
 			isa = PBXGroup;
 			children = (
-				9F985C7720EB6EA700614AB7 /* EntityBase.h */,
-				9F985C7820EB6EA700614AB7 /* EntityBase.cpp */,
 				9F985C7D20EB704F00614AB7 /* GameRoleA.h */,
 				9F985C7E20EB704F00614AB7 /* GameRoleA.cpp */,
-				9F127F6620EF7D7C00356DB2 /* RoleModelUtil.h */,
-				9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */,
 				9F33A08020F5B22D00C165F3 /* GameEnemyA.h */,
 				9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */,
+				9F135B7820F88CB10024BD1F /* EntityTestBase.h */,
+				9F135B7920F88CB10024BD1F /* EntityTestBase.cpp */,
 			);
-			name = "人物";
+			name = "人物Test";
 			sourceTree = "<group>";
 		};
 		9F985C8020EB76BB00614AB7 /* 状态 */ = {
@@ -839,15 +867,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F135B7A20F88CB10024BD1F /* EntityTestBase.cpp in Sources */,
 				9F985C7F20EB704F00614AB7 /* GameRoleA.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				9F9DB6CD20C8032100A6605B /* HeroStandingState.cpp in Sources */,
+				9F135B8320F8A7DB0024BD1F /* ActorModel.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				9F985C7220EB1A7000614AB7 /* CCCsvHelper.cpp in Sources */,
 				9FA29D6B20C8EBD100554312 /* HeroMoveLeftState.cpp in Sources */,
 				9F985C8720EB781F00614AB7 /* GameRoleCmd.cpp in Sources */,
 				9F9B62E520ECB998000D757B /* GameRoleRunState.cpp in Sources */,
 				9F1CD2BE20E64C5A00AAF7CC /* GDMainGameScene.cpp in Sources */,
+				9F135B8620F8AD600024BD1F /* ActorModelUtil.cpp in Sources */,
 				9F1AC89720DCB07100A92CE1 /* TestRockerScene.cpp in Sources */,
 				9F985C7920EB6EA700614AB7 /* EntityBase.cpp in Sources */,
 				9F1CD2B920E6314D00AAF7CC /* TestWelcomeScene.cpp in Sources */,
@@ -878,6 +909,7 @@
 				9F1D113C20DA017100CF4A81 /* CrashCheckScene.cpp in Sources */,
 				9FA29D6620C8E26800554312 /* HeroCmd.cpp in Sources */,
 				9F9746CB20C54AFE009B5C98 /* Hero.cpp in Sources */,
+				9F135B7F20F892D80024BD1F /* ActorBase.cpp in Sources */,
 				9F127F6820EF7D7C00356DB2 /* RoleModelUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

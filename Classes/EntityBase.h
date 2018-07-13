@@ -18,6 +18,10 @@ class EntityBase:public Node
 public:
     virtual ~EntityBase();
     
+    
+protected:
+//    Sprite* _pSprite;
+    
 };
 
 #endif /* EntityBase_h */
