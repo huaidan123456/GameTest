@@ -1,14 +1,7 @@
-
 .DS_Store
 /cocos2d/*
 
-# Xcode gitignore 
-#
-## Build generated
-build/
-DerivedData/
-
-## Various settings
+# Ignore files build by xcode -----------
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -17,8 +10,13 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
+xcuserdata/
 *.xccheckout
 *.moved-aside
-
 *.xcuserstate
+xcschememanagement.plist
+IDEWorkspaceChecks.plist
+xcuserdata/
+DerivedData/
+
+
