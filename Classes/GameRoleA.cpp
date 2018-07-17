@@ -32,7 +32,7 @@ GameRoleA::~GameRoleA()
 
 bool GameRoleA::init()
 {
-    if (EntityBase::init()) {
+    if (EntityTestBase::init()) {
         
         initRole();
         return true;

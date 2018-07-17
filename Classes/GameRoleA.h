@@ -9,14 +9,14 @@
 #define GameRoleA_h
 
 #include <stdio.h>
-#include "EntityBase.h"
+#include "EntityTestBase.h"
 #include "DirectionDefine.h"
 
 
 
 class GameRoleCmd;
 class GameRoleState;
-class GameRoleA:public EntityBase
+class GameRoleA:public EntityTestBase
 {
 public:
     CREATE_FUNC(GameRoleA);
@@ -63,7 +63,7 @@ public:
     virtual Rect getRoleAttackRect();
     
     /**
-     *  获取攻击范围
+     *  获取技能攻击范围
      */
     virtual Rect getRoleSkillAtkRect();
     

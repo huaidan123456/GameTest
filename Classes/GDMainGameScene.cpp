@@ -5,6 +5,8 @@
 //  Created by Allen on 2018/6/29.
 //
 
+
+
 #include "GDMainGameScene.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
@@ -17,6 +19,9 @@
 
 #include "GameEnemyA.h"
 #include "FightTestManager.h"
+
+
+#include "SkillButton.h"
 
 
 
@@ -238,16 +243,20 @@ void GDMainGameScene::loadGameScene()
     this->addChild(attackBtn,11);
     
     // 技能按钮
-    auto skillBtn = Button::create();
-    skillBtn->loadTextureNormal("joyStickskillButton.png",Button::TextureResType::PLIST);
-    skillBtn->loadTextureDisabled("joyStickskillButtonGray.png",Button::TextureResType::PLIST);
-    skillBtn->loadTexturePressed("joyStickskillButtonHighLight.png",Button::TextureResType::PLIST);
-    skillBtn->setPosition(Vec2(1050, 120));
-    skillBtn->addClickEventListener([this](Ref* btn){
+    auto skillBtn = SkillButton::create("joyStickskillButton.png");
+    skillBtn->setSkillCoolTime(10);
+    skillBtn->setPosition(1050, 120);
+    skillBtn->setUpdateEnable(true);
+    skillBtn->addClickCallback([this](float pressTime){
         _pHero->handleInputCmd(GameRoleCmd::create(GameRoleCmd::Command::Skill1Cmd));
+    });
+
+    skillBtn->addSkillCDEndCallback([this]{
+        CCLOG(" 技能 CD 结束 ");
     });
     this->addChild(skillBtn,11);
     
+
     // 英雄
     CCRANDOM_0_1();
     float sj = CCRANDOM_0_1();

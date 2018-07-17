@@ -9,11 +9,11 @@
 #define GameEnemyA_h
 
 #include <stdio.h>
-#include "EntityBase.h"
+#include "EntityTestBase.h"
 #include "DirectionDefine.h"
 
 
-class GameEnemyA:public EntityBase
+class GameEnemyA:public EntityTestBase
 {
 public:
     CREATE_FUNC(GameEnemyA);
