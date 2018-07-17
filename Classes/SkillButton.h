@@ -12,8 +12,6 @@
 #include "cocos2d.h"
 
 
-// TODO: ①添加点击回调  ②添加时间更新 ③添加控制是否开启时间更新
-
 USING_NS_CC;
 
 class SkillButton:public Node
