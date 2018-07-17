@@ -65,6 +65,7 @@
 		9F1CD2B920E6314D00AAF7CC /* TestWelcomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CD2B820E6314D00AAF7CC /* TestWelcomeScene.cpp */; };
 		9F1CD2BE20E64C5A00AAF7CC /* GDMainGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CD2BD20E64C5A00AAF7CC /* GDMainGameScene.cpp */; };
 		9F1D113C20DA017100CF4A81 /* CrashCheckScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D113B20DA017100CF4A81 /* CrashCheckScene.cpp */; };
+		9F209CAF20FC44F400E904DD /* SkillButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F209CAE20FC44F400E904DD /* SkillButton.cpp */; };
 		9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F21941C20DB9711000B8569 /* GameRocker.cpp */; };
 		9F32826F20F3556E0029DDC1 /* GameRoleHurtState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F32826E20F3556E0029DDC1 /* GameRoleHurtState.cpp */; };
 		9F32827220F365870029DDC1 /* GameRoleSkillState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F32827120F365870029DDC1 /* GameRoleSkillState.cpp */; };
@@ -214,6 +215,8 @@
 		9F1CD2BD20E64C5A00AAF7CC /* GDMainGameScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GDMainGameScene.cpp; sourceTree = "<group>"; };
 		9F1D113A20DA017100CF4A81 /* CrashCheckScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashCheckScene.h; sourceTree = "<group>"; };
 		9F1D113B20DA017100CF4A81 /* CrashCheckScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CrashCheckScene.cpp; sourceTree = "<group>"; };
+		9F209CAD20FC44F400E904DD /* SkillButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillButton.h; sourceTree = "<group>"; };
+		9F209CAE20FC44F400E904DD /* SkillButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SkillButton.cpp; sourceTree = "<group>"; };
 		9F21941B20DB9711000B8569 /* GameRocker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRocker.h; sourceTree = "<group>"; };
 		9F21941C20DB9711000B8569 /* GameRocker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRocker.cpp; sourceTree = "<group>"; };
 		9F32826D20F3556E0029DDC1 /* GameRoleHurtState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleHurtState.h; sourceTree = "<group>"; };
@@ -545,6 +548,7 @@
 		9F1CD2BB20E64BEC00AAF7CC /* 格斗游戏 */ = {
 			isa = PBXGroup;
 			children = (
+				9F209CAC20FC449F00E904DD /* 技能按钮 */,
 				9F985C8420EB771800614AB7 /* 命令 */,
 				9F985C8020EB76BB00614AB7 /* 状态 */,
 				9F135B7B20F88E8B0024BD1F /* 人物 */,
@@ -575,6 +579,15 @@
 				9F1D113B20DA017100CF4A81 /* CrashCheckScene.cpp */,
 			);
 			name = "碰撞检测";
+			sourceTree = "<group>";
+		};
+		9F209CAC20FC449F00E904DD /* 技能按钮 */ = {
+			isa = PBXGroup;
+			children = (
+				9F209CAD20FC44F400E904DD /* SkillButton.h */,
+				9F209CAE20FC44F400E904DD /* SkillButton.cpp */,
+			);
+			name = "技能按钮";
 			sourceTree = "<group>";
 		};
 		9F21941A20DB96C3000B8569 /* 摇杆 */ = {
@@ -892,6 +905,7 @@
 				9F985C8320EB76FB00614AB7 /* GameRoleState.cpp in Sources */,
 				9F62314E20CA2ADF00FF8DE8 /* ALTools.cpp in Sources */,
 				9F9746C720C4E425009B5C98 /* Entity.cpp in Sources */,
+				9F209CAF20FC44F400E904DD /* SkillButton.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				9F97469C20C4DFB2009B5C98 /* GameScene.cpp in Sources */,
 				9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */,
