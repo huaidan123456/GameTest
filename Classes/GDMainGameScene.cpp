@@ -74,6 +74,13 @@ void GDMainGameScene::onLoadResources()
     
     addImageAsync("GDGameRes/model/10032/10032_stand.png");
     addImageAsync("GDGameRes/model/10032/10032_hurt.png");
+    addImageAsync("GDGameRes/model/10032/10032_walk.png");
+    
+    
+    addImageAsync("GDGameRes/model/10035/10035_stand.png");
+    addImageAsync("GDGameRes/model/10035/10035_hurt.png");
+    addImageAsync("GDGameRes/model/10035/10035_attack.png");
+    addImageAsync("GDGameRes/model/10035/10035_walk.png");
     
     
     
@@ -160,6 +167,13 @@ void GDMainGameScene::onLoadResourcesCompleted()
     
     sfInstance->addSpriteFramesWithFile("GDGameRes/model/10032/10032_stand.plist");
     sfInstance->addSpriteFramesWithFile("GDGameRes/model/10032/10032_hurt.plist");
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10032/10032_walk.plist");
+    
+    
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10035/10035_stand.plist");
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10035/10035_hurt.plist");
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10035/10035_attack.plist");
+    sfInstance->addSpriteFramesWithFile("GDGameRes/model/10035/10035_walk.plist");
     
     
     auto animation = Animation::create();
@@ -182,6 +196,16 @@ void GDMainGameScene::onLoadResourcesCompleted()
     animation2->setDelayPerUnit(0.2);
     animation2->setRestoreOriginalFrame(true);
     AnimationCache::getInstance()->addAnimation(animation2, "10032_hurt");
+    
+    auto aniwalk = Animation::create();
+    for (int i = 0; i < 10; ++i) {
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(StringUtils::format("10032_walk_%s.png",getNumStr(i).c_str()));
+        if (!frame) break;
+        aniwalk->addSpriteFrame(frame);
+    }
+    aniwalk->setDelayPerUnit(0.2);
+    aniwalk->setRestoreOriginalFrame(true);
+    AnimationCache::getInstance()->addAnimation(aniwalk, "10032_walk");
     
     
     

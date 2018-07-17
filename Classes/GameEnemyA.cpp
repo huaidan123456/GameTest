@@ -52,6 +52,38 @@ void GameEnemyA::standingWaitAction()
     }
 }
 
+void GameEnemyA::walkingAction(DirectionTypeDefine directionType)
+{
+    _directionEnable = true;
+    stopAllActionAnimation();
+    auto anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_walk",_roleId));
+    if (anim) {
+        anim->setLoops(-1);
+        _pRole->runAction(Animate::create(anim));
+    }
+    _nowSpeed = _speedWalk;
+    _direction = directionType;
+    this->listenerMove(DO_MOVE_TIME);
+    
+    switch (_direction) {
+        case DirectionTypeDefine::LeftType:
+        case DirectionTypeDefine::LeftUpType:
+        case DirectionTypeDefine::LeftDownType:
+            setupRoleFlippedX(true);
+            break;
+        case DirectionTypeDefine::RightType:
+        case DirectionTypeDefine::RightUpType:
+        case DirectionTypeDefine::RightDownType:
+            setupRoleFlippedX(false);
+            
+            break;
+        default:
+            break;
+    }
+    
+    resetAttackStage();
+}
+
 void GameEnemyA::hurtAction()
 {
     stopAllActionAnimation();

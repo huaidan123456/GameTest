@@ -138,6 +138,14 @@ Rect GameRoleA::getRoleHurtRect()
     return Rect(getPositionX()-_hurtSize.width/2, getPositionY()-_hurtSize.height/2, _hurtSize.width, _hurtSize.height);
 }
 
+/**
+ *  获取角色的攻击范围
+ */
+Rect GameRoleA::getRoleWatchRect()
+{
+    return Rect(getPositionX()-_watchSize.width/2, getPositionY()-_watchSize.height/2, _watchSize.width, _watchSize.height);
+}
+
 
 
 

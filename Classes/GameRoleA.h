@@ -73,6 +73,12 @@ public:
     virtual Rect getRoleHurtRect();
     
     
+    /**
+     *  获取角色的攻击范围
+     */
+    virtual Rect getRoleWatchRect();
+    
+    
     
 
     /**
@@ -156,6 +162,9 @@ private:
     Size _skillSize;
     //** 受到攻击的尺寸 *//
     Size _hurtSize;
+    //** 视野尺寸 *//
+    Size _watchSize;
+    
     
     
     int _roleId = 20002;

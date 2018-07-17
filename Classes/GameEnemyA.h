@@ -44,9 +44,13 @@ public:
     /**
      *  动作
      */
+    
     // 站立等待动作
     void standingWaitAction();
-    
+    // 步行动作
+    void walkingAction(DirectionTypeDefine directionType);
+    // 攻击动作
+    void attackAction();
     // 受攻击动作
     void hurtAction();
     
@@ -62,6 +66,11 @@ public:
      *  获取被攻击范围
      */
     virtual Rect getRoleHurtRect();
+    
+    /**
+      获取视野范围
+     */
+    virtual Rect getRoleWatchRect();
     
     
     
@@ -97,6 +106,9 @@ private:
     
     //** 攻击尺寸 *//
     Size _attackSize;
+    
+    //** 观察尺寸 *//
+    Size _watchSize;
     
     int _roleId = 10032;
     float _speedWalk;

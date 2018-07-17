@@ -74,6 +74,7 @@
 		9F366C3D20EE3A46009427D3 /* GameRoleAttackState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F366C3C20EE3A46009427D3 /* GameRoleAttackState.cpp */; };
 		9F62314E20CA2ADF00FF8DE8 /* ALTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F62314D20CA2ADF00FF8DE8 /* ALTools.cpp */; };
 		9F6AC40620C6B49B00AD4941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AC40520C6B49B00AD4941 /* Images.xcassets */; };
+		9F79289720FE0241008AC3E0 /* GameRoleAITest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79289620FE0241008AC3E0 /* GameRoleAITest.cpp */; };
 		9F94FE0F20D105D4005D0541 /* guaiwu in Resources */ = {isa = PBXBuildFile; fileRef = 9F94FE0E20D105D4005D0541 /* guaiwu */; };
 		9F97469C20C4DFB2009B5C98 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F97469B20C4DFB2009B5C98 /* GameScene.cpp */; };
 		9F9746A120C4DFF0009B5C98 /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F9746A020C4DFF0009B5C98 /* LoadingScene.cpp */; };
@@ -232,6 +233,8 @@
 		9F62314C20CA2ADF00FF8DE8 /* ALTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTools.h; sourceTree = "<group>"; };
 		9F62314D20CA2ADF00FF8DE8 /* ALTools.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALTools.cpp; sourceTree = "<group>"; };
 		9F6AC40520C6B49B00AD4941 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "GameTest-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		9F79289520FE0241008AC3E0 /* GameRoleAITest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleAITest.h; sourceTree = "<group>"; };
+		9F79289620FE0241008AC3E0 /* GameRoleAITest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleAITest.cpp; sourceTree = "<group>"; };
 		9F94FE0E20D105D4005D0541 /* guaiwu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = guaiwu; sourceTree = "<group>"; };
 		9F97469A20C4DFB2009B5C98 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		9F97469B20C4DFB2009B5C98 /* GameScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -653,6 +656,8 @@
 				9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */,
 				9F135B7820F88CB10024BD1F /* EntityTestBase.h */,
 				9F135B7920F88CB10024BD1F /* EntityTestBase.cpp */,
+				9F79289520FE0241008AC3E0 /* GameRoleAITest.h */,
+				9F79289620FE0241008AC3E0 /* GameRoleAITest.cpp */,
 			);
 			name = "人物Test";
 			sourceTree = "<group>";
@@ -911,6 +916,7 @@
 				9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */,
 				9F9746A120C4DFF0009B5C98 /* LoadingScene.cpp in Sources */,
 				9F33A08620F5FAA800C165F3 /* FightTestManager.cpp in Sources */,
+				9F79289720FE0241008AC3E0 /* GameRoleAITest.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				9FA29D7120C8ED2E00554312 /* HeroAttackState.cpp in Sources */,
 				9F985C7120EB1A7000614AB7 /* CsvUtil.cpp in Sources */,
