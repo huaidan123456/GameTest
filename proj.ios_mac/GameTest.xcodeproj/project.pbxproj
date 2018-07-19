@@ -52,6 +52,7 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		9F06882B20FF46960028EFC0 /* ALGameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F06882A20FF46960028EFC0 /* ALGameUtils.cpp */; };
 		9F0C70BE20E9D6C000CA4D32 /* CSV in Resources */ = {isa = PBXBuildFile; fileRef = 9F0C70BD20E9D6C000CA4D32 /* CSV */; };
 		9F0C70CC20EA24E100CA4D32 /* ALCsvUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C70CB20EA24E100CA4D32 /* ALCsvUtil.cpp */; };
 		9F127F6820EF7D7C00356DB2 /* RoleModelUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F127F6720EF7D7C00356DB2 /* RoleModelUtil.cpp */; };
@@ -190,6 +191,8 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9F06882920FF46960028EFC0 /* ALGameUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALGameUtils.h; sourceTree = "<group>"; };
+		9F06882A20FF46960028EFC0 /* ALGameUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALGameUtils.cpp; sourceTree = "<group>"; };
 		9F0C70BD20E9D6C000CA4D32 /* CSV */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CSV; sourceTree = "<group>"; };
 		9F0C70CA20EA24E100CA4D32 /* ALCsvUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALCsvUtil.h; sourceTree = "<group>"; };
 		9F0C70CB20EA24E100CA4D32 /* ALCsvUtil.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALCsvUtil.cpp; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				9F985C6F20EB1A7000614AB7 /* StringUtil.h */,
 				9F0C70CA20EA24E100CA4D32 /* ALCsvUtil.h */,
 				9F0C70CB20EA24E100CA4D32 /* ALCsvUtil.cpp */,
+				9F06882920FF46960028EFC0 /* ALGameUtils.h */,
+				9F06882A20FF46960028EFC0 /* ALGameUtils.cpp */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -915,6 +920,7 @@
 				9F97469C20C4DFB2009B5C98 /* GameScene.cpp in Sources */,
 				9F21941D20DB9711000B8569 /* GameRocker.cpp in Sources */,
 				9F9746A120C4DFF0009B5C98 /* LoadingScene.cpp in Sources */,
+				9F06882B20FF46960028EFC0 /* ALGameUtils.cpp in Sources */,
 				9F33A08620F5FAA800C165F3 /* FightTestManager.cpp in Sources */,
 				9F79289720FE0241008AC3E0 /* GameRoleAITest.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

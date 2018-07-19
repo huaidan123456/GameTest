@@ -22,6 +22,7 @@
 
 
 #include "SkillButton.h"
+#include "GameRoleAITest.h"
 
 
 
@@ -286,19 +287,22 @@ void GDMainGameScene::loadGameScene()
     float sj = CCRANDOM_0_1();
     int roleId = sj < 0.5 ? 20001 :20002;
     
-    _pHero = GameRoleA::create(roleId);
+    _pHero = GameRoleA::create(20001);
     _pHero->setPosition(Vec2(100, 100));
     this->addChild(_pHero,2);
+    FightTestManager::getInstance()->addRole(_pHero);
     
     this->scheduleUpdate();
     
     
     // 添加一个敌人
-    auto enemy = GameEnemyA::create(10032);
+    auto enemy = GameEnemyA::create(20002);
     enemy->setPosition(900, 200);
     this->addChild(enemy,1);
     
     FightTestManager::getInstance()->addEnemy(enemy);
+    
+    GameRoleAITest::getInstance()->start();
 }
 
 

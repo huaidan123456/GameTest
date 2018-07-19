@@ -80,6 +80,9 @@ public:
     
     
     
+    virtual void doAttackEnemyAs(int multiple);
+    
+    
 
     /**
      *  动作
@@ -122,6 +125,8 @@ protected:
     void setupRoleFlippedX(bool isFlipped);
     bool isRoleFlippedX();
     
+    bool isRoleDirectionRight(){ return !isRoleFlippedX();};
+    
     // 添加攻击效果Sprite*
     void addAttackEffect(Sprite* sp, int zOrder = 0);
     void removeAttackEffect(const std::string& name);
@@ -141,7 +146,7 @@ protected:
 //    CC_SYNTHESIZE_READONLY_PASS_BY_REF(Rect, _attackRect, AttackRect);
     
     
-private:
+protected:
     Sprite* _pRole = nullptr;
     Sprite* _pShadow = nullptr;
     Sprite* _pHurt = nullptr;

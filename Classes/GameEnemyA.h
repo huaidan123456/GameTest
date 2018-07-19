@@ -9,14 +9,13 @@
 #define GameEnemyA_h
 
 #include <stdio.h>
-#include "EntityTestBase.h"
+#include "GameRoleA.h"
 #include "DirectionDefine.h"
 
 
-class GameEnemyA:public EntityTestBase
+class GameEnemyA:public GameRoleA
 {
 public:
-    CREATE_FUNC(GameEnemyA);
     static GameEnemyA* create(int roleId)
     {
         GameEnemyA *pRet = new(std::nothrow) GameEnemyA(roleId);
@@ -33,87 +32,12 @@ public:
         }
     }
     
-    GameEnemyA(int roleId = 10032);
-    virtual ~GameEnemyA();
+    GameEnemyA(int roleId = 20002)
+    {
+        _roleId = roleId;
+    };
     
-    virtual bool init() override;
-    
-    
-public:
-    
-    /**
-     *  动作
-     */
-    
-    // 站立等待动作
-    void standingWaitAction();
-    // 步行动作
-    void walkingAction(DirectionTypeDefine directionType);
-    // 攻击动作
-    void attackAction();
-    // 受攻击动作
-    void hurtAction();
-    
-    
-    
-    
-    /**
-     *  获取攻击范围
-     */
-    virtual Rect getRoleAttackRect();
-    
-    /**
-     *  获取被攻击范围
-     */
-    virtual Rect getRoleHurtRect();
-    
-    /**
-      获取视野范围
-     */
-    virtual Rect getRoleWatchRect();
-    
-    
-    
-protected:
-    void initRole();
-    
-    // 停止所有活动动作
-    void stopAllActionAnimation();
-    
-    
-    
-    // 设置角色是否反转
-    void setupRoleFlippedX(bool isFlipped);
-    bool isRoleFlippedX();
-    
-    
-private:
-    Sprite* _pRole = nullptr;
-    Sprite* _pShadow = nullptr;
-    Sprite* _pHurt = nullptr;
-    Node* _pAtkEffectNode = nullptr;
-    Node* _pSkillEffectNode = nullptr;
-    
-    //** 方向 *//
-    DirectionTypeDefine _direction;
-    //** 当前速度 *//
-    float _nowSpeed;
-    
-    //** 攻击阶段 *//
-    int _attackStage = 0;
-    //** 是否可以更改攻击状态 *//
-    bool _changeAttackEnable = true;
-    
-    //** 攻击尺寸 *//
-    Size _attackSize;
-    
-    //** 观察尺寸 *//
-    Size _watchSize;
-    
-    int _roleId = 10032;
-    float _speedWalk;
-    float _speedRun;
-    
+    virtual void doAttackEnemyAs(int multiple)override;
 };
 
 #endif /* GameEnemyA_h */

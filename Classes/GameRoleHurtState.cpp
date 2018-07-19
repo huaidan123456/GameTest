@@ -62,7 +62,7 @@ GameRoleState* GameRoleHurtState::handleCommand(GameRoleA* role,GameRoleCmd* cmd
         }
         case GameRoleCmd::Command::Skill1Cmd:
         {
-            state = new GameRoleSkillState();
+//            state = new GameRoleSkillState();
             break;
         }
         case GameRoleCmd::Command::Skill2Cmd:

@@ -5,6 +5,9 @@
 #include "TestWelcomeScene.h"
 #include "GDMainGameScene.h"
 
+#include "ALTools.h"
+#include "ALGameUtils.h"
+
 USING_NS_CC;
 
 //static cocos2d::Size designResolutionSize = cocos2d::Size(1280,720);
@@ -84,6 +87,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
     
+    
+    
+    CCLOG("开始 --- 开始");
+    
+//    int mcount = 10;
+//    while (mcount--) {
+//        
+//        
+//        CCLOG("---- %f",CCRANDOM_0_1());
+//    }
+//    
+    
+    CCLOG("结束 --- 结束");
     
 
     

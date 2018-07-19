@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "PublicDefine.h"
 #include "GameEnemyA.h"
+#include "GameRoleA.h"
 
 USING_NS_CC;
 
@@ -25,6 +26,12 @@ public:
     
     void attackEnemyAs(Rect atkRect,int multiple);
     
+    void attackRoleAs(Rect atkRect,int multiple);
+    
+    void addRole(GameRoleA* enemy);
+    
+    const Vector<GameRoleA*>& getRoleVector() const;
+    
     void addEnemy(GameEnemyA* enemy);
     
     const Vector<GameEnemyA*>& getEnemyVector() const;
@@ -34,6 +41,7 @@ protected:
     ~FightTestManager();
     
     Vector<GameEnemyA*> _enemyVector;
+    Vector<GameRoleA*> _roleVector;
     
 };
 

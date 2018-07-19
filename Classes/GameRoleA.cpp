@@ -113,16 +113,16 @@ void GameRoleA::resetInitActionState()
  */
 Rect GameRoleA::getRoleAttackRect()
 {
-    if (isRoleFlippedX()) {
-        return Rect(getPositionX()-_attackSize.width, getPositionY()-_attackSize.height/2, _attackSize.width, _attackSize.height);
-    }
-    else{
+    
+    if (isRoleDirectionRight()) {
         return Rect(getPositionX(), getPositionY()-_attackSize.height/2, _attackSize.width, _attackSize.height);
+    }else{
+        return Rect(getPositionX()-_attackSize.width, getPositionY()-_attackSize.height/2, _attackSize.width, _attackSize.height);
     }
 }
 
 /**
- *  获取攻击范围
+ *  获取技能范围
  */
 Rect GameRoleA::getRoleSkillAtkRect()
 {
@@ -139,13 +139,19 @@ Rect GameRoleA::getRoleHurtRect()
 }
 
 /**
- *  获取角色的攻击范围
+ *  获取角色的视野范围
  */
 Rect GameRoleA::getRoleWatchRect()
 {
     return Rect(getPositionX()-_watchSize.width/2, getPositionY()-_watchSize.height/2, _watchSize.width, _watchSize.height);
 }
 
+
+
+void GameRoleA::doAttackEnemyAs(int multiple)
+{
+    FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), multiple);
+}
 
 
 
@@ -163,7 +169,7 @@ void GameRoleA::standingWaitAction()
         _pRole->runAction(Animate::create(anim));
     }
     
-    resetAttackStage();
+//    resetAttackStage();
 }
 
 void GameRoleA::standingIdleAction()
@@ -177,7 +183,7 @@ void GameRoleA::standingIdleAction()
         anim->setLoops(-1);
         _pRole->runAction(Animate::create(anim));
     }
-    resetAttackStage();
+//    resetAttackStage();
 }
 
 void GameRoleA::walkingAction(DirectionTypeDefine directionType)
@@ -209,7 +215,7 @@ void GameRoleA::walkingAction(DirectionTypeDefine directionType)
             break;
     }
     
-    resetAttackStage();
+//    resetAttackStage();
 }
 
 void GameRoleA::runningAction(DirectionTypeDefine directionType)
@@ -241,7 +247,7 @@ void GameRoleA::runningAction(DirectionTypeDefine directionType)
         default:
             break;
     }
-    resetAttackStage();
+//    resetAttackStage();
 }
 
 void GameRoleA::attackAction()
@@ -255,7 +261,8 @@ void GameRoleA::attackAction()
     if (_attackStage == 0 || _attackStage == 1) {
         auto effectAnim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack_effect",_roleId));
         auto effect = Sprite::createWithSpriteFrameName(StringUtils::format("%d_attack_effect_0000.png",_roleId));
-        effect->setAnchorPoint(RoleModelUtil::getInstance()->getRoleAttackPoint(_roleId));
+        auto atkPoint = RoleModelUtil::getInstance()->getRoleAttackPoint(_roleId);
+        effect->setAnchorPoint(isRoleDirectionRight() ? atkPoint : (Vec2(1 - atkPoint.x,atkPoint.y)));
         effect->setName("effect");
         addAttackEffect(effect);
         auto effectAnction = Sequence::create(Animate::create(effectAnim),CallFunc::create([this]{
@@ -264,52 +271,39 @@ void GameRoleA::attackAction()
         effect->runAction(effectAnction);
     }
     
+    Animation* anim = nullptr;
     if (_attackStage == 0) {
-        auto anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack",_roleId));
-        if (anim) {
-            anim->setLoops(1);
-            float animTime = ((float)anim->getFrames().size()) * anim->getDelayPerUnit();
-            float delay =  animTime - 0.2f;
-            auto action1 = Sequence::create(DelayTime::create(delay),CallFunc::create([this]{
-                _changeAttackEnable = true;
-            }), NULL);
-            
-            auto action2 = Sequence::create(Animate::create(anim),DelayTime::create(0.2f),CallFunc::create([this]{
-                _actionState->exit(this);
-            }), NULL);
-            
-            auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
-                FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), 0);
-            }), NULL);
-            
-            _changeAttackEnable = false;
-            _attackStage++;
-            _pRole->runAction(Spawn::create(action1,action2,atkEnemyAct, NULL));
-        }
-    }else {
-        auto anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack_%d",_roleId,_attackStage));
-        if (anim) {
-            anim->setLoops(1);
-            float animTime = ((float)anim->getFrames().size()) * anim->getDelayPerUnit();
-            float delay =  animTime - 0.2f;
-            auto action1 = Sequence::create(DelayTime::create(delay),CallFunc::create([this]{
-                _changeAttackEnable = true;
-            }), NULL);
-            
-            auto action2 = Sequence::create(Animate::create(anim),DelayTime::create(0.2f),CallFunc::create([this]{
-                _actionState->exit(this);
-            }), NULL);
-            
-            auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
-                FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), 0);
-            }), NULL);
-            
-            _changeAttackEnable = false;
-            _attackStage++;
-            _pRole->runAction(Spawn::create(action1,action2,atkEnemyAct, NULL));
-        }
+        anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack",_roleId));
+    }else{
+        anim = AnimationCache::getInstance()->getAnimation(StringUtils::format("%d_attack_%d",_roleId,_attackStage));
     }
     
+    if (anim) {
+        anim->setLoops(1);
+        float animTime = ((float)anim->getFrames().size()) * anim->getDelayPerUnit();
+        float delay =  animTime + 1;
+
+        unschedule("GameRole_Attack");
+        scheduleOnce([this](float ft){
+            this->resetAttackStage();
+        }, delay, "GameRole_Attack");
+        
+        
+        auto action = Sequence::create(Animate::create(anim),CallFunc::create([this]{
+            _changeAttackEnable = true;
+            _actionState->exit(this);
+        }), NULL);
+        
+        
+        auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
+            this->doAttackEnemyAs(0);
+        }), NULL);
+        
+        _changeAttackEnable = false;
+        _attackStage++;
+        _pRole->runAction(Spawn::create(action,atkEnemyAct, NULL));
+    }
+
     _attackStage = _attackStage >= 6 ? 0 : _attackStage;
 }
 
@@ -361,7 +355,7 @@ void GameRoleA::skill1Action()
     
     float animTime = anim->getFrames().size()*anim->getDelayPerUnit();
     auto atkAct = CallFunc::create([this]{
-        FightTestManager::getInstance()->attackEnemyAs(getRoleSkillAtkRect(), 0);
+        this->doAttackEnemyAs(0);
     });
     auto atkEnemyAct = Sequence::create(DelayTime::create(animTime*0.3),atkAct,DelayTime::create(animTime*0.3),atkAct, NULL);
     this->runAction(atkEnemyAct);
