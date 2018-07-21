@@ -11,11 +11,12 @@
 #include <stdio.h>
 #include "EntityTestBase.h"
 #include "DirectionDefine.h"
-
+#include "BloodStripView.h"
 
 
 class GameRoleCmd;
 class GameRoleState;
+class BloodStripView;
 class GameRoleA:public EntityTestBase
 {
 public:
@@ -80,7 +81,15 @@ public:
     
     
     
-    virtual void doAttackEnemyAs(int multiple);
+    /**
+     *  执行攻击敌人函数
+     */
+    virtual void doAttackEnemyAs(int atk);
+    
+    /**
+     掉血操作
+     */
+    virtual void doLoseHp(int loseNum);
     
     
 
@@ -142,8 +151,6 @@ protected:
     //** 方向状态是否可用 *//
     CC_SYNTHESIZE_READONLY_PASS_BY_REF(bool, _directionEnable, DirectionEnable);
     
-    //** 获取攻击范围 *//
-//    CC_SYNTHESIZE_READONLY_PASS_BY_REF(Rect, _attackRect, AttackRect);
     
     
 protected:
@@ -152,10 +159,14 @@ protected:
     Sprite* _pHurt = nullptr;
     Node* _pAtkEffectNode = nullptr;
     Node* _pSkillEffectNode = nullptr;
+    BloodStripView* _pBloodView = nullptr;
+    
+    
     
     DirectionTypeDefine _direction;
     //** 当前速度 *//
     float _nowSpeed;
+    int _hp;
     //** 攻击阶段 *//
     int _attackStage = 0;
     //** 是否可以更改攻击状态 *//
@@ -175,6 +186,12 @@ protected:
     int _roleId = 20002;
     float _speedWalk;
     float _speedRun;
+    
+    //** 总血量 *//
+    int _hpTotal;
+    //** 基础攻击力 *//
+    int _atkBase;
+    
     
     
 };

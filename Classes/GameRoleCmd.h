@@ -30,6 +30,7 @@ public:
         Skill3Cmd,
         Skill4Cmd,
         Skill5Cmd,
+        DeathCmd,
     };
     
     

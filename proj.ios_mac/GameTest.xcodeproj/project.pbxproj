@@ -73,6 +73,8 @@
 		9F33A08220F5B22E00C165F3 /* GameEnemyA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F33A08120F5B22D00C165F3 /* GameEnemyA.cpp */; };
 		9F33A08620F5FAA800C165F3 /* FightTestManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F33A08520F5FAA800C165F3 /* FightTestManager.cpp */; };
 		9F366C3D20EE3A46009427D3 /* GameRoleAttackState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F366C3C20EE3A46009427D3 /* GameRoleAttackState.cpp */; };
+		9F3BA67C210087D3003CCCB7 /* BloodStripView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3BA67B210087D3003CCCB7 /* BloodStripView.cpp */; };
+		9F3BA67F2100969D003CCCB7 /* GameRoleDeathState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F3BA67E2100969D003CCCB7 /* GameRoleDeathState.cpp */; };
 		9F62314E20CA2ADF00FF8DE8 /* ALTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F62314D20CA2ADF00FF8DE8 /* ALTools.cpp */; };
 		9F6AC40620C6B49B00AD4941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AC40520C6B49B00AD4941 /* Images.xcassets */; };
 		9F79289720FE0241008AC3E0 /* GameRoleAITest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F79289620FE0241008AC3E0 /* GameRoleAITest.cpp */; };
@@ -233,6 +235,10 @@
 		9F33A08520F5FAA800C165F3 /* FightTestManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FightTestManager.cpp; sourceTree = "<group>"; };
 		9F366C3B20EE3A46009427D3 /* GameRoleAttackState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleAttackState.h; sourceTree = "<group>"; };
 		9F366C3C20EE3A46009427D3 /* GameRoleAttackState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleAttackState.cpp; sourceTree = "<group>"; };
+		9F3BA67A210087D3003CCCB7 /* BloodStripView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BloodStripView.h; sourceTree = "<group>"; };
+		9F3BA67B210087D3003CCCB7 /* BloodStripView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BloodStripView.cpp; sourceTree = "<group>"; };
+		9F3BA67D2100969D003CCCB7 /* GameRoleDeathState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRoleDeathState.h; sourceTree = "<group>"; };
+		9F3BA67E2100969D003CCCB7 /* GameRoleDeathState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameRoleDeathState.cpp; sourceTree = "<group>"; };
 		9F62314C20CA2ADF00FF8DE8 /* ALTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTools.h; sourceTree = "<group>"; };
 		9F62314D20CA2ADF00FF8DE8 /* ALTools.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ALTools.cpp; sourceTree = "<group>"; };
 		9F6AC40520C6B49B00AD4941 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "GameTest-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -556,6 +562,7 @@
 		9F1CD2BB20E64BEC00AAF7CC /* 格斗游戏 */ = {
 			isa = PBXGroup;
 			children = (
+				9F3BA67921008543003CCCB7 /* 血条 */,
 				9F209CAC20FC449F00E904DD /* 技能按钮 */,
 				9F985C8420EB771800614AB7 /* 命令 */,
 				9F985C8020EB76BB00614AB7 /* 状态 */,
@@ -605,6 +612,15 @@
 				9F21941C20DB9711000B8569 /* GameRocker.cpp */,
 			);
 			name = "摇杆";
+			sourceTree = "<group>";
+		};
+		9F3BA67921008543003CCCB7 /* 血条 */ = {
+			isa = PBXGroup;
+			children = (
+				9F3BA67A210087D3003CCCB7 /* BloodStripView.h */,
+				9F3BA67B210087D3003CCCB7 /* BloodStripView.cpp */,
+			);
+			name = "血条";
 			sourceTree = "<group>";
 		};
 		9F62314A20CA2A5100FF8DE8 /* Util */ = {
@@ -684,6 +700,8 @@
 				9F32826E20F3556E0029DDC1 /* GameRoleHurtState.cpp */,
 				9F32827020F365870029DDC1 /* GameRoleSkillState.h */,
 				9F32827120F365870029DDC1 /* GameRoleSkillState.cpp */,
+				9F3BA67D2100969D003CCCB7 /* GameRoleDeathState.h */,
+				9F3BA67E2100969D003CCCB7 /* GameRoleDeathState.cpp */,
 			);
 			name = "状态";
 			sourceTree = "<group>";
@@ -906,6 +924,8 @@
 				9F985C7920EB6EA700614AB7 /* EntityBase.cpp in Sources */,
 				9F1CD2B920E6314D00AAF7CC /* TestWelcomeScene.cpp in Sources */,
 				9FE848CB20CE59DE0081D2C8 /* GameMap.cpp in Sources */,
+				9F3BA67C210087D3003CCCB7 /* BloodStripView.cpp in Sources */,
+				9F3BA67F2100969D003CCCB7 /* GameRoleDeathState.cpp in Sources */,
 				9F33A08220F5B22E00C165F3 /* GameEnemyA.cpp in Sources */,
 				9F1CD2B020E5E71900AAF7CC /* ALSceneExtension.cpp in Sources */,
 				9F0C70CC20EA24E100CA4D32 /* ALCsvUtil.cpp in Sources */,

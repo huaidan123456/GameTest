@@ -297,7 +297,7 @@ void GDMainGameScene::loadGameScene()
     
     // 添加一个敌人
     auto enemy = GameEnemyA::create(20002);
-    enemy->setPosition(900, 200);
+    enemy->setPosition(700, 200);
     this->addChild(enemy,1);
     
     FightTestManager::getInstance()->addEnemy(enemy);

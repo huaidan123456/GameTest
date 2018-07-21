@@ -10,7 +10,7 @@
 
 GameRoleCmd::~GameRoleCmd()
 {
-    CCLOG("~GameRoleCmd()");
+    
 }
 
 GameRoleCmd* GameRoleCmd::create(GameRoleCmd::Command cmd)

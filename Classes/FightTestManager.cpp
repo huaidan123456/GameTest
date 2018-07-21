@@ -48,20 +48,21 @@ const Vector<GameRoleA*>& FightTestManager::getRoleVector()const
 }
 
 
-void FightTestManager::attackEnemyAs(Rect atkRect,int multiple)
+void FightTestManager::attackEnemyAs(Rect atkRect,int atk)
 {
     for (auto enemy : _enemyVector) {
         auto hurtRect = enemy->getRoleHurtRect();
-        CCLOG("atkRect = (%f,%f,%f,%f) -- hurtRect = (%f,%f,%f,%f)",atkRect.origin.x,atkRect.origin.y,atkRect.size.width,atkRect.size.height,hurtRect.origin.x,hurtRect.origin.y,hurtRect.size.width,hurtRect.size.height);
+//        CCLOG("atkRect = (%f,%f,%f,%f) -- hurtRect = (%f,%f,%f,%f)",atkRect.origin.x,atkRect.origin.y,atkRect.size.width,atkRect.size.height,hurtRect.origin.x,hurtRect.origin.y,hurtRect.size.width,hurtRect.size.height);
         
         if (atkRect.intersectsRect(hurtRect))
         {
             enemy->handleInputCmd(GameRoleCmd::create(GameRoleCmd::Command::HurtingCmd));
+            enemy->doLoseHp(atk);
         }
     }
 }
 
-void FightTestManager::attackRoleAs(cocos2d::Rect atkRect, int multiple)
+void FightTestManager::attackRoleAs(cocos2d::Rect atkRect, int atk)
 {
     for (auto role : _roleVector) {
         auto hurtRect = role->getRoleHurtRect();

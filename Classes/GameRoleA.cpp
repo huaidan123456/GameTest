@@ -12,7 +12,7 @@
 #include "GameRoleWalkState.h"
 #include "GameRoleRunState.h"
 #include "RoleModelUtil.h"
-
+#include "BloodStripView.h"
 
 #include "FightTestManager.h"
 
@@ -57,11 +57,18 @@ void GameRoleA::initRole()
     _pSkillEffectNode = Node::create();
     this->addChild(_pSkillEffectNode,3);
     
+    _pBloodView = BloodStripView::create("GDGameRes/ui/fightUI/xuetiao_bar.png", "GDGameRes/ui/fightUI/xuetiao_bg.png");
+    _pBloodView->setPosition(Vec2(0, -10));
+    this->addChild(_pBloodView,2);
+    
     _actionState = new GameRoleStandState();
     _actionState->enter(this);
     
     _speedWalk = 30;
     _speedRun = 60;
+    _hpTotal = 1000;
+    _hp = 1000;
+    _atkBase = 100;
     _attackSize = RoleModelUtil::getInstance()->getRoleAttackSize(_roleId);
     _skillSize = RoleModelUtil::getInstance()->getRoleAttackSize(_roleId);
     _hurtSize = RoleModelUtil::getInstance()->getRoleHurtSize(_roleId);
@@ -148,9 +155,19 @@ Rect GameRoleA::getRoleWatchRect()
 
 
 
-void GameRoleA::doAttackEnemyAs(int multiple)
+void GameRoleA::doAttackEnemyAs(int atk)
 {
-    FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), multiple);
+    FightTestManager::getInstance()->attackEnemyAs(getRoleAttackRect(), atk);
+}
+
+void GameRoleA::doLoseHp(int loseNum)
+{
+    _hp = MAX(0, _hp - loseNum);
+    _pBloodView->setProgress((float)_hp/(float)_hpTotal);
+    if (_hp == 0) {
+        handleInputCmd(GameRoleCmd::create(GameRoleCmd::Command::DeathCmd));
+        CCLOG("死了");
+    }
 }
 
 
@@ -296,7 +313,7 @@ void GameRoleA::attackAction()
         
         
         auto atkEnemyAct = Sequence::create(DelayTime::create(animTime/2.f),CallFunc::create([this]{
-            this->doAttackEnemyAs(0);
+            this->doAttackEnemyAs(_atkBase * (1 + _attackStage * 0.1));
         }), NULL);
         
         _changeAttackEnable = false;
@@ -355,7 +372,7 @@ void GameRoleA::skill1Action()
     
     float animTime = anim->getFrames().size()*anim->getDelayPerUnit();
     auto atkAct = CallFunc::create([this]{
-        this->doAttackEnemyAs(0);
+        this->doAttackEnemyAs(_atkBase * 1.5);
     });
     auto atkEnemyAct = Sequence::create(DelayTime::create(animTime*0.3),atkAct,DelayTime::create(animTime*0.3),atkAct, NULL);
     this->runAction(atkEnemyAct);
@@ -397,6 +414,12 @@ void GameRoleA::skill5Action()
 
 void GameRoleA::deathAction()
 {
+    _directionEnable = false;
+    
+    stopAllActionAnimation();
+    
+    _pRole->setDisplayFrameWithAnimationName(StringUtils::format("%d_hurt",_roleId), 1);
+    _pRole->setColor(Color3B::BLACK);
     resetAttackStage();
 }
 

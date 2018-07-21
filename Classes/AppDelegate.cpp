@@ -88,18 +88,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
     
     
-    
-    CCLOG("开始 --- 开始");
-    
-//    int mcount = 10;
-//    while (mcount--) {
-//        
-//        
-//        CCLOG("---- %f",CCRANDOM_0_1());
-//    }
-//    
-    
-    CCLOG("结束 --- 结束");
+
     
 
     

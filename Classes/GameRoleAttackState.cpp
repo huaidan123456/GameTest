@@ -13,6 +13,7 @@
 #include "GameRoleRunState.h"
 #include "GameRoleHurtState.h"
 #include "GameRoleSkillState.h"
+#include "GameRoleDeathState.h"
 
 
 GameRoleAttackState::GameRoleAttackState()
@@ -91,6 +92,11 @@ GameRoleState* GameRoleAttackState::handleCommand(GameRoleA* role,GameRoleCmd* c
         case GameRoleCmd::Command::Skill5Cmd:
         {
             
+            break;
+        }
+        case GameRoleCmd::Command::DeathCmd:
+        {
+            state = new GameRoleDeathState();
             break;
         }
         default:

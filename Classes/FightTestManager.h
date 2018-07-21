@@ -24,9 +24,9 @@ public:
     
     bool init();
     
-    void attackEnemyAs(Rect atkRect,int multiple);
+    void attackEnemyAs(Rect atkRect,int atk);
     
-    void attackRoleAs(Rect atkRect,int multiple);
+    void attackRoleAs(Rect atkRect,int atk);
     
     void addRole(GameRoleA* enemy);
     

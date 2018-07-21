@@ -1,90 +1,85 @@
 //
-//  GameRoleHurtState.cpp
+//  GameRoleDeathState.cpp
 //  GameTest-mobile
 //
-//  Created by Allen on 2018/7/9.
+//  Created by Allen on 2018/7/19.
 //
 
-#include "GameRoleHurtState.h"
+#include "GameRoleDeathState.h"
 #include "GameRoleA.h"
 #include "GameRoleCmd.h"
-#include "GameRoleHurtState.h"
-#include "GameRoleSkillState.h"
-#include "GameRoleDeathState.h"
 
 
-GameRoleHurtState::GameRoleHurtState()
+GameRoleDeathState::GameRoleDeathState()
 {
-    _stateID = RoleStateDefine::HurtingState;
+    _stateID = RoleStateDefine::StandingState;
 }
 
-GameRoleHurtState::~GameRoleHurtState()
+GameRoleDeathState::~GameRoleDeathState()
 {
     
 }
 
-void GameRoleHurtState::enter(GameRoleA* role)
+void GameRoleDeathState::enter(GameRoleA* role)
 {
     GameRoleState::enter(role);
-    role->hurtAction();
+    role->deathAction();
+    
 }
 
-void GameRoleHurtState::exit(GameRoleA* role)
+void GameRoleDeathState::exit(GameRoleA* role)
 {
     GameRoleState::exit(role);
-    role->resetInitActionState();
 }
 
 
-GameRoleState* GameRoleHurtState::handleCommand(GameRoleA* role,GameRoleCmd* cmd)
+GameRoleState* GameRoleDeathState::handleCommand(GameRoleA* role,GameRoleCmd* cmd)
 {
     GameRoleState* state = nullptr;
     switch (cmd->getCommand()) {
-        case GameRoleCmd::Command::StandingCmd:
-        {
-            break;
-        }
         case GameRoleCmd::Command::WalkingCmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::RunningCmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::AttackCmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::HurtingCmd:
         {
-            state = this;
+            
             break;
         }
         case GameRoleCmd::Command::Skill1Cmd:
         {
-//            state = new GameRoleSkillState();
+            
             break;
         }
         case GameRoleCmd::Command::Skill2Cmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::Skill3Cmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::Skill4Cmd:
         {
+            
             break;
         }
         case GameRoleCmd::Command::Skill5Cmd:
         {
-            break;
-        }
-        case GameRoleCmd::Command::DeathCmd:
-        {
-            state = new GameRoleDeathState();
+            
             break;
         }
         default:
@@ -95,7 +90,7 @@ GameRoleState* GameRoleHurtState::handleCommand(GameRoleA* role,GameRoleCmd* cmd
 }
 
 
-void GameRoleHurtState::update(GameRoleA* role)
+void GameRoleDeathState::update(GameRoleA* role)
 {
     GameRoleState::update(role);
 }
